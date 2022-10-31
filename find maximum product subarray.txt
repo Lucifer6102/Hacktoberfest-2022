@@ -1,0 +1,16 @@
+https://www.youtube.com/watch?v=hJ_Uy2DzE08
+
+int maxProduct(vector<int>& a) {
+        int max_ending_here=a[0];
+        int min_ending_here=a[0];
+        int ans=a[0];
+        for(int i=1;i<a.size();i++)
+        {
+            int temp=max_ending_here;
+            max_ending_here=max({a[i],max_ending_here*a[i],min_ending_here*a[i]});
+            min_ending_here=min({a[i],temp*a[i],min_ending_here*a[i]});
+            ans=max(ans,max_ending_here);
+            
+        }
+        return ans;
+    }
