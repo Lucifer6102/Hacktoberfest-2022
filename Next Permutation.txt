@@ -1,0 +1,28 @@
+https://www.youtube.com/watch?v=LuLCLgMElus
+
+void nextPermutation(vector<int>& a) {
+        int n=a.size();
+        int k=-1;
+        for(int i=n-2;i>=0;i--)
+        {
+            if(a[i]<a[i+1])
+            {
+                k=i;
+                break;
+            }
+        }
+        if(k!=-1)
+        {
+            for(int i=n-1;i>k;i--)
+            {
+                if(a[i]>a[k])
+                {
+                    swap(a[i],a[k]);
+                    break;
+                }
+            }
+            reverse(a.begin()+k+1,a.end());
+        }
+        else
+            reverse(a.begin(),a.end());
+    }
