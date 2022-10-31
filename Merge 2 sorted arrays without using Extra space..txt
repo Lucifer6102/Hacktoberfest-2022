@@ -1,0 +1,65 @@
+https://www.geeksforgeeks.org/efficiently-merging-two-sorted-arrays-with-o1-extra-space/
+
+https://www.youtube.com/watch?v=hVl2b3bLzBw
+
+void merge(int a[], int b[], int n, int m) {
+	    int mx=max(a[n-1],b[m-1]);
+	    mx++;
+	    int i=0;
+	    int j=0;
+	    int k=0;
+	    while(i<n && j<m && k<(n+m))
+	    {
+	        int e1=a[i]%mx;
+	        int e2=b[j]%mx;
+	        
+	        if(e1<=e2)
+	        {
+	            if(k<n)
+	            {
+	                a[k]=a[k]+(e1*mx);
+	            }
+	            else
+	            b[k-n]=b[k-n]+(e1*mx);
+	            i++;
+	            k++;
+	        }
+	        else
+	        {
+	            if(k<n)
+	            a[k]=a[k]+(e2*mx);
+	            else
+	            b[k-n]=b[k-n]+(e2*mx);
+	            k++;
+	            j++;
+	        }
+	    }
+	    while(i<n)
+	    {
+	        int e1=a[i]%mx;
+	        if(k<n)
+	        {
+	            a[k]=a[k]+(e1*mx);
+	        }
+	        else
+	        b[k-n]=b[k-n]+(e1*mx);
+	        i++;
+	        k++;
+	    }
+	    while(j<m)
+	    {
+	        int e2=b[j]%mx;
+	        if(k<n)
+	        {
+	            b[k]=b[k]+(e2*mx);
+	        }
+	        else
+	        b[k-n]=b[k-n]+(e2*mx);
+	        k++;
+	        j++;
+	    }
+	    for(int i=0;i<n;i++)
+	    a[i]=a[i]/mx;
+	    for(int i=0;i<m;i++)
+	    b[i]=b[i]/mx;
+	}
