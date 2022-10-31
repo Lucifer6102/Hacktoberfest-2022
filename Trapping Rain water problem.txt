@@ -1,0 +1,32 @@
+https://www.youtube.com/watch?v=m18Hntz4go8
+
+int trappingWater(int a[], int n){
+
+    // Your code here
+    int l=0;
+    int r=n-1;
+    int maxl=0;
+    int maxr=0;
+    int ans=0;
+    
+    while(l<=r)
+    {
+        if(a[l]<=a[r])
+        {
+            if(a[l]>=maxl)
+            maxl=a[l];
+            else
+            ans=ans+(maxl-a[l]);
+            l++;
+        }
+        else
+        {
+            if(a[r]>=maxr)
+            maxr=a[r];
+            else
+            ans=ans+(maxr-a[r]);
+            r--;
+        }
+    }
+    return ans;
+}
