@@ -1,0 +1,24 @@
+static int __=[](){std::ios::sync_with_stdio(false);return 0;}();
+class Solution {
+public:
+    void moveZeroes(vector<int>& nums) {
+        vector<int>v;
+        int c=0;
+        for(int i=0;i<nums.size();i++)
+            if(nums[i]==0)
+                c++;
+            else
+                v.push_back(nums[i]);
+        int l=0;
+        for(auto it=v.begin();it!=v.end();it++)
+        {
+            nums[l]=*it;
+            l++;
+        }
+        for(int i=0;i<c;i++)
+        {
+            nums[l]=0;
+            l++;
+        }
+    }
+};
